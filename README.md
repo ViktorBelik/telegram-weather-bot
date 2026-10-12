@@ -1,74 +1,69 @@
 ![LocWeather](environment/image/title.jpg)
 
-## LocWeather | Telegram Bot
+# Telegram Weather Bot
 
-[![Telegram](https://img.shields.io/badge/Telegram-@LocWeatherTBot-blue?&logo=Telegram&labelColor=white)](https://web.telegram.org/k/#@LocWeatherTBot)
+Telegram-бот для получения информации о текущей погоде и прогноза по местоположению.
 
-### Описание
-Бот предназначен для определения местоположения и получения данных о погоде в любой точке мира. 
+## Возможности
 
-> [!TIP]
-> Помимо команд, бот реагирует на приветствие, благодарность и похвалу.
+* Получение информации о погоде для указанного местоположения.
+* Получение погодных данных по географическим координатам.
+* Определение координат по адресу или названию места.
+* Кеширование данных с использованием Redis.
+* Хранение информации о пользователях в SQLite.
+* Запуск приложения через Docker Compose.
 
-### Технологии
-- Создан с помощью: ***Telebot (pyTelegramBotAPI)***.  
-- Сервисы предоставления данных: ***rapidapi.com***, ***geocode.maps.co***, ***weatherapi.com***.  
-- Хранение данных: ***SQLite3 + Peewee ORM***.  
-- Кэширование запросов: ***Redis***.  
-- Логирование приложения: ***Loguru***.  
-- Проверка форматирования: ***flake8 + wemake-python-styleguide***.  
-- Проверка аннотаций: ***Pylance***.  
+## Технологический стек
 
-### Скриншоты
+* **Python 3.12**
+* **Telegram Bot API**
+* **Peewee ORM**
+* **SQLite**
+* **Redis**
+* **Docker и Docker Compose**
+* **Requests**
 
-<table>
-  <tr>
-    <td height="300" widht="auto">
-      <img src="environment/image/bot-1.jpg" alt="Main">
-      <div align="center">Старт</div>
-    </td>
-    <td height="300" widht="auto">
-      <img src="environment/image/bot-2.jpg" alt="Signup">
-      <div align="center">Приветствие</div>
-    </td>
-    <td height="300" widht="auto">
-      <img src="environment/image/bot-3.jpg" alt="Profile">
-      <div align="center">Диалог</div>
-    </td>
-  </tr>
-  <tr>
-    <td height="300" widht="auto">
-      <img src="environment/image/bot-6.jpg" alt="Catalog">
-      <div align="center">Погода по координатам</div>
-    </td>
-    <td height="300" widht="auto">
-      <img src="environment/image/bot-7.jpg" alt="Users">
-      <div align="center">Погода по адресу</div>
-    </td>
-    <td height="300" widht="auto">
-      <img src="environment/image/bot-8.jpg" alt="Users">
-      <div align="center">Прогноз на три дня</div>
-    </td>
-  </tr>
-  <tr>
-    <td height="300" widht="auto">
-      <img src="environment/image/bot-4.jpg" alt="Orders">
-      <div align="center">Место по координатам</div>
-    </td>
-    <td height="300" widht="auto">
-      <img src="environment/image/bot-5.jpg" alt="Articles">
-      <div align="center">Координаты по адресу</div>
-    </td>
-    <td height="300" widht="auto">
-      <img src="environment/image/bot-9.jpg" alt="Articles">
-      <div align="center">Проверка координат</div>
-    </td>
-  </tr>
-</table>
+## Установка и запуск
 
-<br>
+### Требования
 
-##### Команды:  
+* Python 3.12 или новее.
+* Docker и Docker Compose либо локальное окружение Python.
+* API-ключи, необходимые для работы приложения.
+
+### Настройка окружения
+
+Создайте файл `.env` на основе шаблона `environment/.env.template`.
+
+Заполните необходимые переменные окружения и API-ключи. Не добавляйте `.env` и другие файлы с секретами в репозиторий.
+
+### Запуск через Docker Compose
+
+```bash
+docker compose up --build
+```
+
+### Локальный запуск
+
+Создайте виртуальное окружение:
+
+```bash
+python -m venv .venv
+```
+
+Установите зависимости:
+
+```bash
+pip install -r requirements.txt
+```
+
+Настройте переменные окружения и запустите приложение:
+
+```bash
+python main.py
+```
+
+## Команды:  
 `/location` - Информация о местоположении  
 `/loc_ad` - Определить адрес по координатам  
 `/loc_co` - Получить координаты по указанному адресу  
@@ -76,6 +71,23 @@
 `/weather` - Информация о погоде  
 `/w_ad` - Погода по указанному адресу  
 `/w_co` - Погода по указанным координатам  
+
+## Структура проекта
+
+* `handlers/` — обработчики команд и сообщений Telegram-бота.
+* `database/` — конфигурация базы данных и модели.
+* `api.py` — запросы к погодному API и обработка полученных данных.
+* `caching.py` — функции кеширования.
+* `config.py` — настройки приложения.
+* `loader.py` — инициализация бота и сервисов.
+* `main.py` — точка входа в приложение.
+
+## Возможные направления развития
+
+* Добавление автоматизированных тестов для API и обработки ошибок.
+* Улучшение обработки сетевых ошибок и тайм-аутов.
+* Дополнительная валидация пользовательского ввода.
+* Разделение API-клиентов и бизнес-логики.
 
 <br>
 <br>

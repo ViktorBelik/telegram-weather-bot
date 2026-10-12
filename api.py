@@ -174,11 +174,13 @@ def weather_request(endpoint: str, par: dict) -> Dict:
     par['aqi'] = 'yes'
     par['lang'] = config.DEFAULT_LANG
     headers = {
-        "x-rapidapi-key": config.RAPID_API_KEY,
-        "x-rapidapi-host": 'weatherapi-com.p.rapidapi.com'
+        # "x-rapidapi-key": config.RAPID_API_KEY,
+        # "x-rapidapi-host": 'weatherapi-com.p.rapidapi.com'
+        "key": config.WEATHER_API_KEY,
     }
     response = requests.get(
-        url=f'{config.WEATHER_RAPID_URL}/{endpoint}',
+        # url=f'{config.WEATHER_RAPID_URL}/{endpoint}',
+        url=f'{config.WEATHER_BASE_URL}/{endpoint}',
         headers=headers,
         params=par)
     return response.json()

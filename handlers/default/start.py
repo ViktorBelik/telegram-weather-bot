@@ -34,7 +34,7 @@ def bot_start(message: Message) -> None:
         # Добавление пользователя в базу данных
         User.create(user_id=user_id, username=username, full_name=full_name)
         logger.info(f"Пользователь {full_name}(id:{user_id}) успешно добавлен.")
-        
+
         bot.send_photo(
             chat_id=message.chat.id,
             photo=image,
@@ -46,11 +46,11 @@ def bot_start(message: Message) -> None:
         # Обновление данных
         user_update = User.get(user_id=user_id)
         user_update.username = username
-        user_update.ull_name = full_name
+        user_update.full_name = full_name
         user_update.save()
         logger.info(f"Данные пользователя (username:id: {user_id}) успешно обновлены. "
                     f"Username: {username}, Full name: {full_name}.")
-        
+
         bot.send_photo(
             message.chat.id,
             photo=image,
